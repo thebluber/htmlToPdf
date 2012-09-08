@@ -1,0 +1,139 @@
+<h3>If all the information is accurate and complete, press the "submit" button below!</h3>
+<table class="table table-striped table-condensed table-bordered">
+  <tr>
+  <th>Full name</th>
+  <th><%= @formData["Last Name"] + " " + @formData["First Name"] + " " + @formData["Middle Name"]%></th>
+  </tr>
+
+  <tr>
+  <th>Name in Katakana</th>
+  <th> <%= @formData["Katakana"]%></th>
+  </tr>
+
+  <tr>
+  <th>Nationality</th>
+  <th> <%= @formData["Nationality"]%></th>
+  </tr>
+
+  <tr>
+  <th>Date of birth</th>
+  <th> <%= @formData["DateOfBirth"]%></th>
+  </tr>
+
+  <tr>
+  <th>Gender</th>
+  <th> <%= @formData["Geschlecht"] == "Ja" ? "Male" : "Female"%></th>
+  </tr>
+  
+  <tr>
+  <th>Marital status</th>
+  <th> <%= @formData["Marriage"] == "Ja" ? "Married" : "Single"%></th>
+  </tr>
+
+  <tr>
+  <th>Place of birth</th>
+  <th> <%= @formData["PlaceOfBirth"]%></th>
+  </tr>
+
+  <tr>
+  <th>Permanent address</th>
+  <th> <%= @formData["Adress"] + " " + @formData["co"]%><br /><%= @formData["PostalCode"] + " " + @formData["City"]%></th>
+  </tr>
+
+  <tr>
+  <th>Present address</th>
+  <th> <%= @formData["Adress2"] + " " + @formData["co2"]%><br /><%= @formData["PostalCode2"] + " " + @formData["City2"]%></th>
+  </tr>
+
+  <tr>
+  <th>Email</th>
+  <th> <%= @formData["Email"] %></th>
+  </tr>
+
+  <tr>
+  <th>Phone</th>
+  <th> <%= @formData["Phone"] %></th>
+  </tr>
+
+  <tr>
+  <th>Date of arrival in Japan</th>
+  <th> <%= @formData["DateOfArrival"] %></th>
+  </tr>
+
+  <tr>
+  <th>Intended period of study at Doushisha University</th>
+  <th> <%= @formData["IntendedPeriod"] %></th>
+  </tr>
+
+  <tr>
+  <th>Passport number</th>
+  <th> <%= @formData["PassportNumber"] %></th>
+  </tr>
+
+  <tr>
+  <th>Date of expiration</th>
+  <th> <%= @formData["Expiration"] %></th>
+  </tr>
+
+  <tr>
+  <th>Place to apply for visa</th>
+  <th> <%= @formData["ApplicationPlace"] %></th>
+  </tr>
+
+  <tr>
+  <th>Port of entry</th>
+  <th> <%= @formData["EntryPort"] %></th>
+  </tr>
+
+  <tr>
+  <th>Previous visit(s) to Japan</th>
+  <% if @formData["Last Visit"] == "Ja" %>
+  <th>Yes <%= @formData["Time"] %>time  Latest visit from <%= @formData["LastVisitBegin"]%> to <%= @formData["LastVisitEnd"]%></th>
+  <% else %>
+  <th>No</th>
+  <% end %>
+  </tr>
+
+  <tr>
+  <th>Criminal record</th>
+  <% if @formData["Last Visit"] == "Ja" %>
+  <th>Yes <%= @formData["CriminalRecord"] %></th>
+  <% else %>
+  <th>No</th>
+  <% end %>
+  </tr>
+  
+  <tr>
+  <th>University</th>
+  <th> <%= @formData["University"] %></th>
+  </tr>
+  
+  <tr>
+  <th>Date of enrollment</th>
+  <th> <%= @formData["DateOfEnrollment"] %></th>
+  </tr>
+  
+  <tr>
+  <th>Expected date of graduation</th>
+  <th> <%= @formData["DateOfGraduation"] %></th>
+  </tr>
+  
+  <tr>
+  <th>Major</th>
+  <th> <%= @formData["Major"] %></th>
+  </tr>
+  
+  <tr>
+  <th>Minor</th>
+  <th> <%= @formData["Minor"] %></th>
+  </tr>
+  
+  <tr>
+  <th>Total years of education(from elementary school to current institution)</th>
+  <th> <%= @formData["YearsOfEdu"] %> years</th>
+  </tr>
+</table>
+<form class="form-inline" action="/submit" method="post">
+  <input type="button" class="btn btn-inverse" value="Edit" onclick="backToEdit()"/>
+  <input type="submit" class="btn btn-primary" value="Submit"/>
+</form>

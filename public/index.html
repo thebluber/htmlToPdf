@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8" />
+     <link rel="stylesheet" type="text/css" href="bootstrap.css">
+     <script src="script.js"></script>
+  </head>
+         
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h1 class="page-header">Doshisha University - Center for Japanese Language and Culture Foreign Exchange Student Information Sheet</h1>
+        </div>
+
+        <div class="span12">
+          <form class="well form-horizontal" id="form" action="/submit" method="post" enctype="multipart/form-data">
+          <fieldset>
+            <legend>Personalia</legend>
+              <br />
+              <label>Full name(in Roman Letters)</label>
+              <input type="text" class="input-small" placeholder="Last" name="Last Name" maxlength="15"/>
+              <input type="text" class="input-small" placeholder="First" name="First Name" maxlength="10"/>
+              <input type="text" class="input-small" placeholder="Middle" name="Middle Name" maxlength="10"/>
+              <br />
+
+              <label>よみかた Name in Katakana</label>
+              <input type="text" name="Katakana" maxlength="35"/>
+              <br />
+            
+              <label>国籍 Nationality</label>
+              <input type="text" class="input-small" placeholder="Germany" name="Nationality" maxlength="10"/>
+              <label>Date of birth</label>
+              <input type="date" name="DateOfBirth"/>
+              <br />
+            
+              <label for="Marriage">Marital Status</label>
+              <select name="Geschlecht" class="input-mini">
+                <option value="Ja">Male</option>
+                <option value="Nein">Female</option>
+              </select>
+              <label for="Geschlecht">Gender</label>
+              <select name="Marriage" class="input-mini">
+                <option value="Ja">Married</option>
+                <option value="Nein">Single</option>
+              </select>
+              <br />
+            
+              <label>Place of birth</label>
+              <input type="text" class="input-small" name="PlaceOfBirth" maxlength="40"/>
+
+            <legend>Contact</legend>
+              Permanent Adress: <br />
+              
+              <label>Postal Code</label><input type="text" class="input-small" name="PostalCode" maxlength="40"/>
+              <label>City</label><input type="text" class="input-small" name="City" maxlength="40"/>
+              <br />
+              <label>Adress</label><input type="text" name="Adress" maxlength="40"/>
+              <br />
+              <label>c/o</label><input type="text" name="co" maxlength="40"/>
+
+              <br />
+              Present Adress: <br />
+              <label>Postal Code</label><input type="text" class="input-small" name="PostalCode2" maxlength="40"/>
+              <label>City</label><input type="text" class="input-small" name="City2" maxlength="40"/>
+              <br />
+              <label>Adress</label><input type="text" name="Adress2" maxlength="40"/>
+              <br />
+              <label>c/o</label><input type="text" name="co2" maxlength="40"/>
+              <br />
+            
+              <label>Email</label><input type="email" class="input-small" name="Email" maxlength="40"/>
+              <label>Phone</label><input type="text" class="input-small" name="Phone" maxlength="12"/>
+
+            <legend>Other</legend>
+            <label>Date of arrival in Japan</label>
+            <input type="date" name="DateOfArrival"/>
+            <label>Intended period of study at Doshisha University</label>
+            <input type="text" name="IntendedPeriod"/>
+            <label>Passport number</label>
+            <input type="text" name="PassportNumber"/>
+            <label>Date of expiration</label>
+            <input type="date" class="input-small" name="Expiration"/>
+            <label>Place to apply for visa</label>
+            <input type="text" class="input-small" name="ApplicationPlace"/>
+            <label>Port of entry</label>
+            <input type="text" class="input-small" name="EntryPort"/>
+            <br />
+            Previous visit(s) to Japan<br />
+            <label class="radio inline">Yes</label>
+            <input type="radio" name="Last Visit" value="Ja"/>
+            <label class="radio inline">No</label>
+            <input type="radio" name="Last Visit" value="Nein"/>
+            <br />
+            Criminal record<br />
+            <label class="radio inline">Yes</label>
+            <input type="radio" name="criminalRecord" value="Ja"/>
+            <label class="radio inline">No</label>
+            <input type="radio" name="criminalRecord" value="Nein"/>
+            
+            <legend>Educational background</legend>
+            <label>Name of current university</label>
+            <input type="text" name="University" />
+            <label>Date of enrollment</label>
+            <input type="date" name="DateOfEnrollment"/>
+            <label>Expected date of graduation</label>
+            <input type="date" name="DateOfGraduation"/>
+            <label>Major</label>
+            <input type="text" name="Major" placeholder="Japonologie"/>
+            <label>Minor(s) (if any)</label>
+            <input type="text" name="Minor"/>
+            <label>Total years of education (from elementary school to current institution)</label>
+            <input type="text" name="YearsOfEdu" class="input-mini"/>
+
+            <label class="checkbox">
+              <input type="checkbox" id="rel"/>
+              Family living in Japan
+            </label>
+            <input type="submit" value="submit" />
+
+          </fieldset>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

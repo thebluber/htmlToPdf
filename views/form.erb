@@ -1,0 +1,152 @@
+
+<form class="well form-horizontal" name="data" action="/validate" method="post" enctype="multipart/form-data" onsubmit="if(!validate()){return false}">
+          <fieldset>
+            <legend>Personalia</legend>
+              <div class="control-group">
+              <label>Full name(in Roman Letters)</label>
+              <input type="text" class="input-small" placeholder="Last" name="Last Name" maxlength="15"/>
+              <input type="text" class="input-small" placeholder="First" name="First Name" maxlength="10"/>
+              </div>
+              <input type="text" class="input-small" placeholder="Middle" name="Middle Name" maxlength="10"/>
+
+              <div class="control-group">
+              <label>よみかた Name in Katakana</label>
+              <input type="text" name="Katakana" maxlength="35"/>
+              </div>
+            
+              <div class="control-group">
+              <label>国籍 Nationality</label>
+              <input type="text" class="input-small" placeholder="Germany" name="Nationality" maxlength="10"/>
+              <label>Date of birth</label>
+              <input type="date" name="DateOfBirth" placeholder="yyyy/mm/dd"/>
+              </div>
+            
+              <div class="control-group">
+              <label for="Geschlecht">Gender</label>
+              <select name="Geschlecht" class="input-small">
+                <option value="Ja">Male</option>
+                <option value="Nein">Female</option>
+              </select>
+              </div>
+              <div class="control-group">
+              <label for="Marriage">Marital Status</label>
+              <select name="Marriage" class="input-small">
+                <option value="Ja">Married</option>
+                <option value="Nein">Single</option>
+              </select>
+              </div>
+            
+              <div class="control-group">
+              <label>Place of birth</label>
+              <input type="text" class="input-small" name="PlaceOfBirth" maxlength="40"/>
+              </div>
+
+            <legend>Contact</legend>
+              <h4>Permanent Adress</h4>
+              <div class="control-group">
+              
+              <label>Postal Code</label><input type="number" class="input-small" name="PostalCode" maxlength="40"/>
+              <label>City</label><input type="text" class="input-small" name="City" maxlength="40"/>
+              <label>Adress</label><input type="text" name="Adress" maxlength="40"/>
+              </div>
+              <label>c/o</label><input type="text" name="co" maxlength="40"/>
+              <br />
+              <h4>Present Adress</h4>
+              <div class="control-group">
+              <label>Postal Code</label><input type="number" class="input-small" name="PostalCode2" maxlength="40"/>
+              <label>City</label><input type="text" class="input-small" name="City2" maxlength="40"/>
+              <br />
+              <label>Adress</label><input type="text" name="Adress2" maxlength="40"/>
+              </div>
+              <label>c/o</label><input type="text" name="co2" maxlength="40"/>
+            
+              <div class="control-group">
+              <label>Email</label><input type="email" class="input-small" name="Email" maxlength="40"/>
+              </div>
+              <div class="control-group">
+              <label>Phone</label><input type="number" class="input-small" name="Phone" maxlength="12"/>
+              </div>
+
+            <legend>Other</legend>
+              <div class="control-group">
+              <label>Date of arrival in Japan</label>
+              <input type="date" name="DateOfArrival"/>
+              </div>
+
+              <div class="control-group">
+              <label>Intended period of study at Doshisha University</label>
+              <input type="number" name="IntendedPeriod" class="input-mini"/>
+              <span class="help-inline">month</span>
+              </div>
+              
+              <div class="control-group">
+              <label>Passport number</label>
+              <input type="text" name="PassportNumber"/>
+              </div>
+              <div class="control-group">
+              <label>Date of expiration</label>
+              <input type="date" class="input-small" name="Expiration" placeholder="yyyy/mm/dd"/>
+              </div>
+              <div class="control-group">
+              <label>Place to apply for visa</label>
+              <input type="text" class="input-small" name="ApplicationPlace"/>
+              </div>
+              <div class="control-group">
+              <label>Port of entry</label>
+              <input type="text" class="input-small" name="EntryPort"/>
+              </div>
+              <br /> 
+              <div class="control-group">
+                Previous visit(s) to Japan<br />
+                <label class="radio inline">Yes</label>
+                <input type="radio" name="Last Visit" value="Ja" onclick="previousVisit(true)"/>
+                <label class="radio inline">No</label>
+                <input type="radio" name="Last Visit" value="Nein" checked="yes" onclick="previousVisit(false)"/>
+                <div id="PreviousVisit"></div>
+              </div>
+
+              <div class="control-group">
+                Criminal record<br />
+                <label class="radio inline">Yes</label>
+                <input type="radio" name="criminalRecord" value="Ja" onclick="criminalR(true)"/>
+                <label class="radio inline">No</label>
+                <input type="radio" name="criminalRecord" value="Nein" checked="yes" onclick="criminalR(false)"/>
+                <div id="CriminalR"></div>
+              </div>
+            
+            <legend>Educational background</legend>
+              <div class="control-group">
+              <label>Name of current university</label>
+              <input type="text" name="University" placeholder="Eberhard Karls Universität Tübingen"/>
+              </div>
+              <div class="control-group">
+              <label>Date of enrollment</label>
+              <input type="date" name="DateOfEnrollment" placeholder="yyyy/mm/dd"/>
+              </div>
+              <div class="control-group">
+              <label>Expected date of graduation</label>
+              <input type="date" name="DateOfGraduation" placeholder="yyyy/mm/dd"/>
+              </div>
+              <div class="control-group">
+              <label>Major</label>
+              <input type="text" name="Major" placeholder="Japonologie"/>
+              </div>
+              <div class="control-group">
+              <label>Minor(s) (if any)</label>
+              <input type="text" name="Minor" placeholder="minor1,minor2"/>
+              </div>
+              <div class="control-group">
+              <label>Total years of education (from elementary school to current institution)</label>
+              <input type="number" name="YearsOfEdu" class="input-mini"/>
+              <span class="help-inline">years</span>
+              </div>
+
+              <label class="checkbox">
+              <input type="checkbox" id="rel" onclick="addRelatives()"/>
+              Family living in Japan
+              </label>
+
+          </fieldset>
+              <input type="submit" value="submit" id="submit"/>
+
+          </form>
