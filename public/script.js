@@ -91,4 +91,5 @@ var addRelatives = function() {
       document.getElementsByTagName("fieldset")[0].removeChild(document.getElementById("relDiv3"));
     }
   }
+}
  
