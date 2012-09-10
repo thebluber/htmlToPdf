@@ -1,5 +1,9 @@
-
-<form class="well form-horizontal" name="data" action="/validate" method="post" enctype="multipart/form-data" onsubmit="if(!validate()){return false}">
+          <h3>
+            Bitte füllen Sie das Online-Formular aus. Zusätzlich müssen Sie das Formular ausdrucken und unterschreiben. 
+          </h3>
+          <br />
+<form class="well form-horizontal" name="data" action="/validate" method="post" enctype="multipart/form-data" onsubmit="return !validate()">
+          <h3>Doshisha University - Center for Japanese Language and Culture Foreign Exchange Student Information Sheet</h3>
           <fieldset>
             <legend>Personalia</legend>
               <div class="control-group">
@@ -68,10 +72,11 @@
               </div>
 
             <legend>Other</legend>
+            <!--
               <div class="control-group">
               <label>Date of arrival in Japan</label>
               <input type="date" name="DateOfArrival"/>
-              </div>
+            </div> -->
 
               <div class="control-group">
               <label>Intended period of study at Doshisha University</label>
@@ -85,7 +90,7 @@
               </div>
               <div class="control-group">
               <label>Date of expiration</label>
-              <input type="date" class="input-small" name="Expiration" placeholder="yyyy/mm/dd"/>
+              <input type="date" name="Expiration" placeholder="yyyy/mm/dd"/>
               </div>
               <div class="control-group">
               <label>Place to apply for visa</label>
@@ -117,7 +122,7 @@
             <legend>Educational background</legend>
               <div class="control-group">
               <label>Name of current university</label>
-              <input type="text" name="University" placeholder="Eberhard Karls Universität Tübingen"/>
+              <input type="text" name="University" placeholder="Eberhard Karls University Tuebingen"/>
               </div>
               <div class="control-group">
               <label>Date of enrollment</label>
@@ -129,7 +134,7 @@
               </div>
               <div class="control-group">
               <label>Major</label>
-              <input type="text" name="Major" placeholder="Japonologie"/>
+              <input type="text" name="Major" placeholder="Japanese Studies"/>
               </div>
               <div class="control-group">
               <label>Minor(s) (if any)</label>
@@ -137,7 +142,7 @@
               </div>
               <div class="control-group">
               <label>Total years of education (from elementary school to current institution)</label>
-              <input type="number" name="YearsOfEdu" class="input-mini"/>
+              <input type="number" name="YearsOfEdu" class="input-mini" placeholder="13"/>
               <span class="help-inline">years</span>
               </div>
 
@@ -147,6 +152,6 @@
               </label>
 
           </fieldset>
-              <input type="submit" value="submit" id="submit"/>
+              <input type="submit" class="btn btn-primary" value="submit" id="submit"/>
 
           </form>

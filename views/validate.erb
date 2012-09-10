@@ -1,4 +1,5 @@
-<h3>If all the information is accurate and complete, press the "submit" button below!</h3>
+<div id="validate">
+  <h3>Bitte überprüfen Sie, ob Ihre Informationen vollständig und korrekt sind. Wenn Sie Felder korrigieren wollen, klicken Sie auf "Edit". Um das ausgefüllte Formular herunterzuladen, klicken Sie auf "Submit".</h3>
 <table class="table table-striped table-condensed table-bordered">
   <tr>
   <th>Full name</th>
@@ -133,7 +134,8 @@
   <th> <%= @formData["YearsOfEdu"] %> years</th>
   </tr>
 </table>
-<form class="form-inline" action="/submit" method="post">
+<form class="form-inline" action="/submit" method="post" onsubmit="lastPage()">
   <input type="button" class="btn btn-inverse" value="Edit" onclick="backToEdit()"/>
-  <input type="submit" class="btn btn-primary" value="Submit"/>
+  <input type="submit" class="btn btn-primary" value="Submit" />
 </form>
+</div>

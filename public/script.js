@@ -17,22 +17,28 @@ var criminalR = function (bool){
 }
 
 var validate = function (){
-  var empty = false;
+  var yearsOfEdu = document.getElementsByName("YearsOfEdu")[0];
+  if (yearsOfEdu.value < 13){
+    yearsOfEdu.select();
+    alert("Years of Education should be >= 13!");
+    return true;
+  }
+  var notEmpty = false;
   var controlGroups = document.getElementsByClassName("control-group");
   for (var i = 0; i < controlGroups.length; i++) {
     var inputs = controlGroups[i].getElementsByTagName("input");
     for (var j = 0; j < inputs.length; j++){
-      if ((inputs[j].value == null || inputs[j].value == "") && controlGroups[i].className != "control-group error"){
-        controlGroups[i].className += " error";
-        empty = empty || true;
+      if (inputs[j].value == null || inputs[j].value == ""){
+        if (controlGroups[i].className != "control-group error"){
+          controlGroups[i].className += " error";
+        }
+        notEmpty = notEmpty || true;
+      } else {
+        notEmpty = notEmpty || false;
       }
     }
   }
-  if (empty) {
-    return false;
-  } else {
-    return true;
-  }
+  return notEmpty;
 }
 
 var backToEdit = function() {
@@ -91,4 +97,20 @@ var addRelatives = function() {
       document.getElementsByTagName("fieldset")[0].removeChild(document.getElementById("relDiv3"));
     }
   }
- 
+}
+
+var lastPage = function() {
+  var div = document.getElementById("validate");
+  div.innerHTML = "";
+  var h3 = document.createElement("H3");
+  h3.innerHTML = "Bitte prüfen Sie, ob Ihre Unterlagen vollständig sind:";
+  div.appendChild(h3);
+  var ul = document.createElement("UL");
+  ul.innerHTML = "<li>Tübingen Information Sheet</li><li>Merkblatt</li><li>Finanzerklärung</li><li>Gesundheitserklärung</li><li>Biographic Information</li><li>Selfintroduction</li><li>Kopie des Reisepasses: 4 Passfotos (3 Photos: 4x3; 1 Photo: 3x2,4;) mit Namen auf der Rückseite</li>";
+  div.appendChild(ul);  
+  var print = document.createElement("BUTTON");
+  print.className = "btn btn-primary"
+  print.innerHTML = "Diese Seite ausdrucken!"
+  print.onclick = function() { window.print(); };
+  div.appendChild(print);
+}
