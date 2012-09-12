@@ -100,7 +100,7 @@ get '/finanz' do
 end
 
 get '/gesundheit' do
-  redirect to "Gesundheitserklaerung070912.pdf"
+  redirect to "Gesundheitserklaerung07912.pdf"
 end
 
 get '/biographicInfo' do
