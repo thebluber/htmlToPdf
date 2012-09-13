@@ -55,6 +55,9 @@ var validate = function (){
         }
         notEmpty = notEmpty || true;
       } else {
+        if (controlGroups[i].className == "control-group error"){
+          controlGroups[i].className = "control-group";
+        }
         notEmpty = notEmpty || false;
       }
     }
