@@ -140,4 +140,6 @@ var lastPage = function() {
   print.innerHTML = "Diese Seite ausdrucken!"
   print.onclick = function() { window.print(); };
   div.appendChild(print);
+  document.form.innerHTML = "";
+  return true;
 }

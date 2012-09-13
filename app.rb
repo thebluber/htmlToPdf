@@ -84,7 +84,7 @@ post '/submit' do
     file.close
     %x[pdftk PersonalDataSheetRaw2.pdf fill_form #{person + time}PersonalDataSheet.fdf output ./public/#{person + time}output.pdf]
     #session['file'] = "#{person + time}output.pdf"
-    attachment "#{person + time}output.pdf"
+    redirect to "#{person + time}output.pdf"
 end
 
 get '/download' do
@@ -92,23 +92,23 @@ get '/download' do
 end
 
 get '/merkblatt' do
-  attachment "Merkblatt07.09.12.pdf"
+  redirect to "Merkblatt07.09.12.pdf"
 end
 
 get '/finanz' do
-  attachment "Finanzerklaerung07.09.2012.pdf"  
+  redirect to "Finanzerklaerung07.09.2012.pdf"  
 end
 
 get '/gesundheit' do
-  attachment "Gesundheitserklaerung07912.pdf"
+  redirect to "Gesundheitserklaerung07912.pdf"
 end
 
 get '/biographicInfo' do
-  attachment "BiographicInformation07.09.2012.pdf"
+  redirect to "BiographicInformation07.09.2012.pdf"
 end
 
 get '/selfintro' do
-  attachment "Selfintroduction070912.pdf"
+  redirect to "Selfintroduction070912.pdf"
 end
 
 
