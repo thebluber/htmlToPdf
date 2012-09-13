@@ -23,10 +23,13 @@
             <legend>Personalia</legend>
               <div class="control-group">
               <label>氏名 Full name(in Roman Letters)</label>
-              <input type="text" class="input-small" placeholder="Last" name="Last Name" maxlength="15"/>
-              <input type="text" class="input-small" placeholder="First" name="First Name" maxlength="10"/>
+              <span>Last name: </span>
+              <input type="text" class="input-small" name="Last Name" maxlength="15"/>
+              <span>First name: </span>
+              <input type="text" class="input-small" name="First Name" maxlength="10"/>
               </div>
-              <input type="text" class="input-small" placeholder="Middle" name="Middle Name" maxlength="10"/>
+              <span>Middle name: </span>
+              <input type="text" class="input-small" name="Middle Name" maxlength="10"/>
 
               <div class="control-group">
               <label>よみかた Name in Katakana</label>
@@ -35,7 +38,7 @@
             
               <div class="control-group">
               <label>国籍 Nationality</label>
-              <input type="text" class="input-small" placeholder="German" name="Nationality" maxlength="10"/>
+              <input type="text" class="input-small" value="German" name="Nationality" maxlength="10"/>
               <label>出生月日 Date of birth</label>
               <input type="text" name="DateOfBirth" id="dateField1" placeholder="yyyy-mm-dd" onchange="checkDate('dateField1')"/>
               </div>
@@ -139,7 +142,7 @@
             <legend>学歴 Educational background</legend>
               <div class="control-group">
               <label>大学名 Name of current university</label>
-              <input type="text" name="University" placeholder="Eberhard Karls University Tuebingen"/>
+              <input type="text" name="University" value="Eberhard Karls University Tuebingen"/>
               </div>
               <div class="control-group">
               <label>入学年月日 Date of enrollment</label>
@@ -151,7 +154,7 @@
               </div>
               <div class="control-group">
               <label>専攻 Major</label>
-              <input type="text" name="Major" placeholder="Japanese Studies"/>
+              <input type="text" name="Major" value="Japanese Studies"/>
               </div>
               <div class="control-group">
               <label>副専攻 Minor(s) (if any)</label>
@@ -159,7 +162,7 @@
               </div>
               <div class="control-group">
               <label>修学年数 Total years of education (from elementary school to current institution)</label>
-              <input type="number" name="YearsOfEdu" class="input-mini" placeholder="13"/>
+              <input type="number" name="YearsOfEdu" class="input-mini" value="13"/>
               <span class="help-inline">years</span>
               </div>
 
