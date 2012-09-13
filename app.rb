@@ -1,5 +1,6 @@
 #encoding:utf-8
 require "sinatra"
+require "cgi"
 enable :sessions
 
 get '/' do
@@ -84,7 +85,7 @@ post '/submit' do
     file.close
     %x[pdftk PersonalDataSheetRaw2.pdf fill_form #{person + time}PersonalDataSheet.fdf output ./public/#{person + time}output.pdf]
     #session['file'] = "#{person + time}output.pdf"
-    redirect to "#{person + time}output.pdf"
+    redirect to "#{CGI::escape(person + time)}output.pdf"
 end
 
 get '/download' do
