@@ -114,8 +114,3 @@ get '/download/selfintro' do
   redirect to "Selfintroduction070912.pdf"
 end
 
-
-get '/lastCheck' do
-  erb :last
-end
-
