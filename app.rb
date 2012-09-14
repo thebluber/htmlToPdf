@@ -21,18 +21,6 @@ end
 
 post '/validate' do
     session['form'] = params.to_a
-    redirect to "/validate"    
-end
-
-get '/validate' do
-    @formData = {}
-    session['form'].each do |el|
-      @formData[el[0]] = el[1]
-    end
-    erb :validate
-end
-
-post '/submit' do
     data = {}
     session['form'].each do |el|
       data[el[0]] = el[1]
@@ -85,31 +73,44 @@ post '/submit' do
     "
     file.close
     %x[pdftk PersonalDataSheetRaw2.pdf fill_form #{person + time}PersonalDataSheet.fdf output ./public/#{person + time}output.pdf]
+    session['formPDF'] = "#{CGI::escape(person + time)}output.pdf"
+    redirect to "/validate"    
+end
+
+get '/validate' do
+    @formData = {}
+    session['form'].each do |el|
+      @formData[el[0]] = el[1]
+    end
+    erb :validate
+end
+
+get '/download/output' do
     #session['file'] = "#{person + time}output.pdf"
-    redirect to "#{CGI::escape(person + time)}output.pdf"
+    redirect to session['formPDF']
 end
 
 get '/download' do
   erb :download
 end
 
-get '/merkblatt' do
+get '/download/merkblatt' do
   redirect to "Merkblatt07.09.12.pdf"
 end
 
-get '/finanz' do
+get '/download/finanz' do
   redirect to "Finanzerklaerung07.09.2012.pdf"  
 end
 
-get '/gesundheit' do
+get '/download/gesundheit' do
   redirect to "Gesundheitserklaerung07912.pdf"
 end
 
-get '/biographicInfo' do
+get '/download/biographicInfo' do
   redirect to "BiographicInformation07.09.2012.pdf"
 end
 
-get '/selfintro' do
+get '/download/selfintro' do
   redirect to "Selfintroduction070912.pdf"
 end
 

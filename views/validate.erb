@@ -136,8 +136,11 @@
   <th> <%= @formData["YearsOfEdu"] %> years</th>
   </tr>
 </table>
+  <button class="btn btn-inverse" onclick="backToEdit()">Edit</button>
+  <button class="btn btn-primary" onclick="lastPage()">Submit</button>
 </div>
-<form class="form-inline" name="form" action="/submit" method="post" onsubmit="lastPage()">
+<!--
+<form class="form-inline" name="form" action="/submit" method="get" onsubmit="lastPage()">
   <input type="button" class="btn btn-inverse" value="Edit" onclick="backToEdit()"/>
   <input type="submit" class="btn btn-primary" value="Submit" />
-</form>
+</form> -->
