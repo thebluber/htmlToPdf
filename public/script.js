@@ -130,6 +130,7 @@ var addRelatives = function() {
 }
 
 var lastPage = function() {
+  /*
   var div = document.getElementById("validate");
   div.innerHTML = "";
   var h3 = document.createElement("H3");
@@ -144,5 +145,7 @@ var lastPage = function() {
   print.onclick = function() { window.print(); };
   div.appendChild(print);
   document.form.innerHTML = "";
+  */
+  window.open('http://outer:9292/lastCheck', '_newtab');
   return true;
 }

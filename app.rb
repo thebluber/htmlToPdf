@@ -114,4 +114,7 @@ get '/selfintro' do
 end
 
 
+get '/lastCheck' do
+  erb :last
+end
 
