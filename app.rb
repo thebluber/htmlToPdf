@@ -28,15 +28,18 @@ post '/validate' do
     person = data["Last Name"] + data["First Name"]
     data["IntendedPeriod"] += "months"
     time = Time.now.strftime("%d_%m_%Y")
-    file = open("#{person + time}PersonalDataSheet.fdf", "w")
+    file = open("#{person + time}PersonalDataSheet.xfdf", "w")
     file2 = open("#{person}PersonalDataSheet.csv", "w") 
-    file.puts "%FDF-1.2
-    1 0 obj
-    <<
-    /FDF
-    <<
-    /Fields [
-    << /V (2012)/T (Text6) >>"
+    file.puts "<?xml version='1.0' encoding='UTF-8'?>
+  <xfdf xmlns='http://ns.adobe.com/xfdf/' xml:space='preserve'>
+  <f href='PersonalDataSheetRaw2.pdf'/>
+  <fields>
+    <field name='Text6'>
+      <value>2012</value>
+    </field>
+    <field name='DateOfArrival'>
+      <value>2012/04/05</value>
+    </field>"
     data.each do |k, v|
       hash = {"ä" => "ae", "Ä" => "Ae", "ü" => "ue", "Ü" => "Ue", "ö" => "oe", "Ö" => "Oe", "ß" => "ss"}
       old_v = v
@@ -47,32 +50,13 @@ post '/validate' do
       end
 
       hash.each{|key, val| v.gsub!(key, val)}
-      
-      if (k == "DateOfArrival")
-        file.puts "<< /V (2012/04/05)/T (DateOfArrival) >>"
-      elsif (v != "Ja" || v != "Nein")
-        file.puts "<< /V (#{v})/T (#{k}) >>"
-      else
-        file.puts "<< /V /#{v}/T (#{k}) >>"
-      end
-
-
+      file.puts "<field name='#{k}'><value>#{v}</value></field>"      
       file2.puts "#{k},#{old_v}"
     end
     
-    file.puts "]
-    >>
-    >>
-    endobj
-    trailer
-    
-    <<
-    /Root 1 0 R
-    >>
-    %%EOF
-    "
+    file.puts "</fields><ids original='3960E6432781FA8EA1642785B0B3B659' modified='291C88F0210F49448C059C53102ECB1D'/></xfdf>"
     file.close
-    %x[pdftk PersonalDataSheetRaw2.pdf fill_form #{person + time}PersonalDataSheet.fdf output ./public/#{person + time}output.pdf]
+    %x[pdftk PersonalDataSheetRaw3.pdf fill_form #{person + time}PersonalDataSheet.xfdf output ./public/#{person + time}output.pdf]
     session['formPDF'] = "#{CGI::escape(person + time)}output.pdf"
     redirect to "/validate"    
 end
