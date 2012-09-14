@@ -38,6 +38,7 @@ post '/submit' do
       data[el[0]] = el[1]
     end
     person = data["Last Name"] + data["First Name"]
+    data["IntendedPeriod"] += "months"
     time = Time.now.strftime("%d_%m_%Y")
     file = open("#{person + time}PersonalDataSheet.fdf", "w")
     file2 = open("#{person}PersonalDataSheet.csv", "w") 
