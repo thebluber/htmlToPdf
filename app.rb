@@ -26,7 +26,8 @@ post '/validate' do
       data[el[0]] = el[1]
     end
     person = data["Last Name"] + data["First Name"]
-    data["IntendedPeriod"] += "months"
+    data["IntendedPeriod"] += " months"
+    data["Katakana"] = data["Katakana"].unpack('U*').map{ |i| "&#x" + i.to_s(16).rjust(4, '0').upcase }.join(";") + ";"
     time = Time.now.strftime("%d_%m_%Y")
     file = open("#{person + time}PersonalDataSheet.xfdf", "w")
     file2 = open("#{person}PersonalDataSheet.csv", "w") 
