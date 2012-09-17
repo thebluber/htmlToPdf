@@ -1,6 +1,7 @@
 #encoding:utf-8
 require "sinatra"
 require "cgi"
+require "RMagick"
 enable :sessions
 
 get '/' do
@@ -26,8 +27,8 @@ post '/validate' do
       data[el[0]] = el[1]
     end
     person = data["Last Name"] + data["First Name"]
+    session['KatakanaName'] = data["Katakana"];
     data["IntendedPeriod"] += " months"
-    data["Katakana"] = data["Katakana"].unpack('U*').map{ |i| "&#x" + i.to_s(16).rjust(4, '0').upcase }.join(";") + ";"
     time = Time.now.strftime("%d_%m_%Y")
     file = open("#{person + time}PersonalDataSheet.xfdf", "w")
     file2 = open("#{person}PersonalDataSheet.csv", "w") 
@@ -57,8 +58,8 @@ post '/validate' do
     
     file.puts "</fields><ids original='3960E6432781FA8EA1642785B0B3B659' modified='291C88F0210F49448C059C53102ECB1D'/></xfdf>"
     file.close
-    %x[pdftk PersonalDataSheetRaw3.pdf fill_form #{person + time}PersonalDataSheet.xfdf output ./public/#{person + time}output.pdf]
-    session['formPDF'] = "#{CGI::escape(person + time)}output.pdf"
+    %x[pdftk PersonalDataSheetRaw4.pdf fill_form #{person + time}PersonalDataSheet.xfdf output #{person + time}output.pdf]
+    session['formPDF'] = "#{person + time}output.pdf"
     redirect to "/validate"    
 end
 
@@ -71,6 +72,15 @@ get '/validate' do
 end
 
 get '/download/output' do
+    pdf = Magick::ImageList.new
+    Magick::Image::read(session['formPDF']){self.density = 150}.map{|img| pdf << img}
+    kana = Magick::Draw.new{self.density = "150x150"}
+    kana.annotate(pdf[0], 0,0,350,395, session['KatakanaName']){
+      self.font_family = "Kozuka Mincho Pr6N" 
+      self.pointsize = 12
+    }
+    pdf.write("./public/" + session['formPDF']);
+
     #session['file'] = "#{person + time}output.pdf"
     redirect to session['formPDF']
 end

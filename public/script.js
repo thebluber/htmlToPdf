@@ -143,6 +143,6 @@ var lastPage = function() {
   print.innerHTML = "Diese Seite ausdrucken!"
   print.onclick = function() { window.print(); };
   div.appendChild(print);
-  window.open('http://outer:9292/download/output', '_newtab'); //'http://hiroshima.japanologie.kultur.uni-tuebingen.de:9292/download/output', '_newtab');
+  window.open('http://localhost:9292/download/output', '_newtab'); //'http://hiroshima.japanologie.kultur.uni-tuebingen.de:9292/download/output', '_newtab');
   return true;
 }
